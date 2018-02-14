@@ -26,7 +26,10 @@ export class UserEditPageComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       name: '',
       lastname: '',
-      image: ''
+      image: '',
+      username:'',
+      email:'',
+      password:''
     });
   }
 
@@ -34,7 +37,10 @@ export class UserEditPageComponent implements OnInit {
     this.userService.create(
       this.userForm.get('name').value,
       this.userForm.get('lastname').value,
-      this.userForm.get('image').value).subscribe(serverResponse=>{
+      this.userForm.get('image').value,
+      this.userForm.get('username').value,
+      this.userForm.get('email').value,
+      this.userForm.get('password').value).subscribe(serverResponse=>{
         this.router.navigate(['/users']);
     }, error=>{
       console.log(error);

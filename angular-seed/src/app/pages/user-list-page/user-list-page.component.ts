@@ -6,8 +6,8 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/of';
 import { AuthService } from '../../common/auth.service';
 
-import {UsersService}from '../../services/users.service';
-import {User}from '../../models/user';
+import {UsersService} from '../../services/users.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'user-list-page',

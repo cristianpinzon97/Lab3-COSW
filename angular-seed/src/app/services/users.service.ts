@@ -34,8 +34,8 @@ constructor(
     });
   }
 
-  create(name: string, lastname: string, image: string): Observable<User[]> {
-    return this.post(this.resourceUrl,new User(name, lastname, image));
+  create(name: string, lastname: string, image: string, username:string,email:string, password:string): Observable<User[]> {
+    return this.post(this.resourceUrl,new User(name, lastname, image,username,email, password));
 
   }
 

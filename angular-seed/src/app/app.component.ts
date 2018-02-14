@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from './common/auth.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UsersService } from './services/users.service';
-
 import { User } from './models/user';
 
 @Component({

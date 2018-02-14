@@ -5,12 +5,18 @@
         <th>Name</th>
         <th>Last Name</th>
         <th>Image</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
     </tr>
     </thead>
     <tr *ngFor="let user of users">
         <td>{{user.name}}</td>
         <td>{{user.lastname}}</td>
         <td><img [src]="user.image" width="150" height="150" /></td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.password}}</td>
     </tr>
 </table>
 
