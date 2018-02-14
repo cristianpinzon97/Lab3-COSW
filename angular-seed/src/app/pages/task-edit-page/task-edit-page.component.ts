@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TodoService } from '../../services/todo.service'
+import { AuthService } from '../../common/auth.service';
 
 @Component({
   selector: 'app-task-edit-page',
@@ -6,13 +10,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-edit-page.component.css']
 })
 export class TaskEditPageComponent implements OnInit {
-  constructor(
-  ) {
+    public todoForm: FormGroup;
 
-  }
+      constructor(public authService: AuthService,public todoService: TodoService,public formBuilder: FormBuilder,public router: Router) {
+      }
 
-  ngOnInit() {
+   ngOnInit() {
+          this.todoForm = this.formBuilder.group({
+                          description: '',
+                          completed: '',
+                          priority: ''
+                        });
+      }
 
-  }
+     onSubmit() {
+         this.todoService.create(
+           this.todoForm.get('description').value,
+           this.todoForm.get('priority').value,
+           Boolean(this.todoForm.get('completed').value)
+         ).subscribe(serverResponse=>{
+             this.router.navigate(['/tasks']);
+         }, error=>{
+           console.log(error);
+         });
+       }
+
+       isLoggedIn() {
+             return this.authService.isLoggedIn();
+           }
+
+           signOut() {
+             this.authService.signOut();
+           }
 
 }
